@@ -270,6 +270,9 @@
     <Content Include="..\ReadMe.txt">
       <Link>ReadMe.txt</Link>
     </Content>
+    <Content Include="App_Data\Acdf_log.ldf">
+      <DependentUpon>Acdf.mdf</DependentUpon>
+    </Content>
     <Content Include="Archives\FouadBenchekroun\Scan10337Web.JPG" />
     <Content Include="Archives\FouadBenchekroun\Scan10338.JPG" />
     <Content Include="Archives\FouadBenchekroun\Scan10339.JPG" />
@@ -490,6 +493,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="App_Settings\Distrib-appSettings.config" />
+    <Content Include="App_Data\Acdf.mdf" />
     <None Include="Properties\PublishProfiles\ACDF.pubxml" />
     <None Include="Properties\PublishProfiles\ACDFTEST.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -734,9 +738,7 @@
     <Content Include="Views\Account\NotRegistered.cshtml" />
     <Content Include="Views\Home\_PanelLastInfoPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
