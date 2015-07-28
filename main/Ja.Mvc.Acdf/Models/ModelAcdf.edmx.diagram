@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de6d00061ebe49dab83bfbcfa8df6d7c" Name="Diagram1">
+        <EntityTypeShape EntityType="AcdfModel.AcdfCategory" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcdfModel.AcdfPhoto" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcdfModel.AcdfSubCategory" Width="1.5" PointX="3.875" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="AcdfModel.FK_AcdfPhoto_AcdfCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AcdfModel.FK_AcdfSubCategory_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="AcdfModel.FK_AcdfPhoto_AcdfSubCategory" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AcdfModel.AcdfGuessBook" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AcdfModel.AspNetUser" Width="2.125" PointX="11.125" PointY="1" />
+        <AssociationConnector Association="AcdfModel.FK_AcdfGuessBook_AspNetUsers" />
+        <AssociationConnector Association="AcdfModel.FK_AcdfPhoto_AspNetUsers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

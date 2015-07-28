@@ -1,0 +1,62 @@
+﻿<div class="col-lg-6 col-sm-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Les 5 dernières photos</h4>
+        </div>
+        <div class="panel-body">
+            <p>Découvrez les 5 dernières photos que vous avez postées</p>
+            <div class="panel-group" id="accordion5Photos">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" title="Anecdote semaine" data-parent="#accordionL" href="#collapse5Photos">
+                                Découvrir
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse5Photos" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @Html.Partial("_HomeLastFivePhotoPartial")
+                            <p><a class="btn btn-default" href="#">See more &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
+            <ul class="list-inline"><li><a href="#">4 Days Ago</a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i> 7 Comments</a></li><li><a href="#"><i class="glyphicon glyphicon-share"></i> 56 Shares</a></li></ul>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-sm-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Les 5 derniers posts</h4>
+        </div>
+        <div class="panel-body" style="font-size:small">
+            <p>Lisez les 5 dernières signatures du livre d'or</p>
+            <div class="panel-group" id="accordion5Posts">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" title="Anecdote semaine" data-parent="#accordionL" href="#collapse5Posts">
+                                Lire
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse5Posts" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @Html.Partial("_HomeLastFiveGuessBookPartial")
+                            <p><a class="btn btn-default" href="#">See more &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
+            <ul class="list-inline"><li><a href="#">4 Days Ago</a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i> 7 Comments</a></li><li><a href="#"><i class="glyphicon glyphicon-share"></i> 56 Shares</a></li></ul>
+        </div>
+    </div>
+</div>

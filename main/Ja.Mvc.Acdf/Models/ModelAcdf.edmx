@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AcdfModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcdfCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AcdfGuessBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="AcdfPhoto">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Place" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="SchoolPeriod" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SubCategoryId" Type="int" />
+          <Property Name="ThumbPath" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="AcdfSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="SubCategoryName" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Pseudo" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="FirstYearSchool" Type="int" Nullable="false" />
+          <Property Name="LastYearSchool" Type="int" Nullable="false" />
+          <Property Name="LastClass" Type="nvarchar(max)" />
+          <Property Name="ActualCity" Type="nvarchar(max)" />
+          <Property Name="ActualCountry" Type="nvarchar(max)" />
+          <Property Name="AvatarUrl" Type="nvarchar(max)" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="UseGravatar" Type="bit" Nullable="false" />
+          <Property Name="UseSocialNetworkPicture" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AcdfGuessBook_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AcdfGuessBook" Type="Self.AcdfGuessBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcdfGuessBook">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfPhoto_AcdfCategory">
+          <End Role="AcdfCategory" Type="Self.AcdfCategory" Multiplicity="0..1" />
+          <End Role="AcdfPhoto" Type="Self.AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfPhoto_AcdfSubCategory">
+          <End Role="AcdfSubCategory" Type="Self.AcdfSubCategory" Multiplicity="0..1" />
+          <End Role="AcdfPhoto" Type="Self.AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfSubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfPhoto_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="AcdfPhoto" Type="Self.AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfSubCategory_ToTable">
+          <End Role="AcdfCategory" Type="Self.AcdfCategory" Multiplicity="0..1" />
+          <End Role="AcdfSubCategory" Type="Self.AcdfSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="AcdfSubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcdfModelStoreContainer">
+          <EntitySet Name="AcdfCategory" EntityType="Self.AcdfCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcdfGuessBook" EntityType="Self.AcdfGuessBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcdfPhoto" EntityType="Self.AcdfPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcdfSubCategory" EntityType="Self.AcdfSubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AcdfGuessBook_AspNetUsers" Association="Self.FK_AcdfGuessBook_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AcdfGuessBook" EntitySet="AcdfGuessBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfPhoto_AcdfCategory" Association="Self.FK_AcdfPhoto_AcdfCategory">
+            <End Role="AcdfCategory" EntitySet="AcdfCategory" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfPhoto_AcdfSubCategory" Association="Self.FK_AcdfPhoto_AcdfSubCategory">
+            <End Role="AcdfSubCategory" EntitySet="AcdfSubCategory" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfPhoto_AspNetUsers" Association="Self.FK_AcdfPhoto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfSubCategory_ToTable" Association="Self.FK_AcdfSubCategory_ToTable">
+            <End Role="AcdfCategory" EntitySet="AcdfCategory" />
+            <End Role="AcdfSubCategory" EntitySet="AcdfSubCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AcdfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AcdfCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcdfPhotoes" Relationship="Self.FK_AcdfPhoto_AcdfCategory" FromRole="AcdfCategory" ToRole="AcdfPhoto" />
+          <NavigationProperty Name="AcdfSubCategories" Relationship="Self.FK_AcdfSubCategory_ToTable" FromRole="AcdfCategory" ToRole="AcdfSubCategory" />
+        </EntityType>
+        <EntityType Name="AcdfPhoto">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="Int32" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolPeriod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="ThumbPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcdfCategory" Relationship="Self.FK_AcdfPhoto_AcdfCategory" FromRole="AcdfPhoto" ToRole="AcdfCategory" />
+          <NavigationProperty Name="AcdfSubCategory" Relationship="Self.FK_AcdfPhoto_AcdfSubCategory" FromRole="AcdfPhoto" ToRole="AcdfSubCategory" />
+          <NavigationProperty Name="AspNetUser" Relationship="AcdfModel.FK_AcdfPhoto_AspNetUsers" FromRole="AcdfPhoto" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AcdfSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="AcdfCategory" Relationship="Self.FK_AcdfSubCategory_ToTable" FromRole="AcdfSubCategory" ToRole="AcdfCategory" />
+          <NavigationProperty Name="AcdfPhotoes" Relationship="Self.FK_AcdfPhoto_AcdfSubCategory" FromRole="AcdfSubCategory" ToRole="AcdfPhoto" />
+        </EntityType>
+        <Association Name="FK_AcdfPhoto_AcdfCategory">
+          <End Role="AcdfCategory" Type="Self.AcdfCategory" Multiplicity="0..1" />
+          <End Role="AcdfPhoto" Type="Self.AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfSubCategory_ToTable">
+          <End Role="AcdfCategory" Type="Self.AcdfCategory" Multiplicity="0..1" />
+          <End Role="AcdfSubCategory" Type="Self.AcdfSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="AcdfSubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfPhoto_AcdfSubCategory">
+          <End Role="AcdfSubCategory" Type="Self.AcdfSubCategory" Multiplicity="0..1" />
+          <End Role="AcdfPhoto" Type="Self.AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcdfSubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcdfEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcdfCategories" EntityType="Self.AcdfCategory" />
+          <EntitySet Name="AcdfPhotoes" EntityType="Self.AcdfPhoto" />
+          <EntitySet Name="AcdfSubCategories" EntityType="Self.AcdfSubCategory" />
+          <AssociationSet Name="FK_AcdfPhoto_AcdfCategory" Association="Self.FK_AcdfPhoto_AcdfCategory">
+            <End Role="AcdfCategory" EntitySet="AcdfCategories" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfSubCategory_ToTable" Association="Self.FK_AcdfSubCategory_ToTable">
+            <End Role="AcdfCategory" EntitySet="AcdfCategories" />
+            <End Role="AcdfSubCategory" EntitySet="AcdfSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfPhoto_AcdfSubCategory" Association="Self.FK_AcdfPhoto_AcdfSubCategory">
+            <End Role="AcdfSubCategory" EntitySet="AcdfSubCategories" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhotoes" />
+          </AssociationSet>
+          <EntitySet Name="AcdfGuessBooks" EntityType="AcdfModel.AcdfGuessBook" />
+          <EntitySet Name="AspNetUsers" EntityType="AcdfModel.AspNetUser" />
+          <AssociationSet Name="FK_AcdfGuessBook_AspNetUsers" Association="AcdfModel.FK_AcdfGuessBook_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AcdfGuessBook" EntitySet="AcdfGuessBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcdfPhoto_AspNetUsers" Association="AcdfModel.FK_AcdfPhoto_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AcdfPhoto" EntitySet="AcdfPhotoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcdfGuessBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AspNetUser" Relationship="AcdfModel.FK_AcdfGuessBook_AspNetUsers" FromRole="AcdfGuessBook" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Pseudo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="FirstYearSchool" Type="Int32" Nullable="false" />
+          <Property Name="LastYearSchool" Type="Int32" Nullable="false" />
+          <Property Name="LastClass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActualCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActualCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AvatarUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="UseGravatar" Type="Boolean" Nullable="false" />
+          <Property Name="UseSocialNetworkPicture" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcdfGuessBooks" Relationship="AcdfModel.FK_AcdfGuessBook_AspNetUsers" FromRole="AspNetUser" ToRole="AcdfGuessBook" />
+          <NavigationProperty Name="AcdfPhotoes" Relationship="AcdfModel.FK_AcdfPhoto_AspNetUsers" FromRole="AspNetUser" ToRole="AcdfPhoto" />
+        </EntityType>
+        <Association Name="FK_AcdfGuessBook_AspNetUsers">
+          <End Type="AcdfModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="AcdfModel.AcdfGuessBook" Role="AcdfGuessBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcdfGuessBook">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcdfPhoto_AspNetUsers">
+          <End Type="AcdfModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="AcdfModel.AcdfPhoto" Role="AcdfPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcdfPhoto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AcdfModelStoreContainer" CdmEntityContainer="AcdfEntities">
+          <EntitySetMapping Name="AcdfCategories">
+            <EntityTypeMapping TypeName="AcdfModel.AcdfCategory">
+              <MappingFragment StoreEntitySet="AcdfCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcdfPhotoes">
+            <EntityTypeMapping TypeName="AcdfModel.AcdfPhoto">
+              <MappingFragment StoreEntitySet="AcdfPhoto">
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SchoolPeriod" ColumnName="SchoolPeriod" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="ThumbPath" ColumnName="ThumbPath" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcdfSubCategories">
+            <EntityTypeMapping TypeName="AcdfModel.AcdfSubCategory">
+              <MappingFragment StoreEntitySet="AcdfSubCategory">
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcdfGuessBooks">
+            <EntityTypeMapping TypeName="AcdfModel.AcdfGuessBook">
+              <MappingFragment StoreEntitySet="AcdfGuessBook">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="AcdfModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UseSocialNetworkPicture" ColumnName="UseSocialNetworkPicture" />
+                <ScalarProperty Name="UseGravatar" ColumnName="UseGravatar" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
+                <ScalarProperty Name="ActualCountry" ColumnName="ActualCountry" />
+                <ScalarProperty Name="ActualCity" ColumnName="ActualCity" />
+                <ScalarProperty Name="LastClass" ColumnName="LastClass" />
+                <ScalarProperty Name="LastYearSchool" ColumnName="LastYearSchool" />
+                <ScalarProperty Name="FirstYearSchool" ColumnName="FirstYearSchool" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
