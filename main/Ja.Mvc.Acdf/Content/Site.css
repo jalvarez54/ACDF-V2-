@@ -12,6 +12,13 @@
 #manageImg{
     border: 2px solid blue;
 }
+.linkPhoto{
+    font-size:smaller;
+}
+.numPhoto{
+    font-size:smaller;
+    color:blue;
+}
 /* CUSTOMIZE CONTAINER 
 -------------------------------------------------- */
 .container{

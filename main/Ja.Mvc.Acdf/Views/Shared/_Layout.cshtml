@@ -91,7 +91,6 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Login/Logout User profile">
-                        <i class="fa fa-user fa-fw"></i>
                         @if (Request.IsAuthenticated)
                         {
                             // - [10003] use Pseudo as ViewName, UserName is ReadOnly
@@ -102,7 +101,24 @@
 
                             // Get the current logged in User and look up the user in ASP.NET Identity
                             var currentUser = userManager.FindById(User.Identity.GetUserId());
-                             @currentUser.Pseudo
+                            // - [10010] - ADD: Avatar in _LoginPartial
+                            // - [10015] - MODIF: _LoginPartial and _Layout
+                            var image = "";
+
+                            if (currentUser.AvatarUrl != null)
+                            {
+                                image = currentUser.AvatarUrl;
+                            }
+                            else
+                            {
+                                image = "~/Content/Avatars/BlankPhoto.jpg";
+                            }
+
+                            @currentUser.Pseudo <img id="login_photo" class="img-circle" style="float: left; padding-right:5px" height="35" width="35" src="@Url.Content(@image)" />
+                        }
+                        else
+                        {
+                            <i class="fa fa-user fa-fw"></i>
                         }
                         <i class="fa fa-caret-down"></i>
 

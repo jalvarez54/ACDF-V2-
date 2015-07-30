@@ -4,9 +4,14 @@
 {
     <div class="thumbnail">
         @{string myTitle = item.SchoolPeriod + " : " + item.Place;}
-        <a class="fancybox" title="@myTitle" href="@item.Path">
-            <img src="@item.ThumbPath" alt="" />
-        </a>
+            <a class="fancybox" title="@myTitle" href="@item.Path">
+                <img src="@item.ThumbPath" alt="" />
+            </a>
+        <div class="btn-group-vertical" role="group">
+            <p class="numPhoto">N° @item.PhotoId</p>           
+            @Html.ActionLink("Edit", "Edit", "Photo", new { id = item.PhotoId }, new { type = "button", @class = "btn btn-default btn-xs linkPhoto" })
+            @Html.ActionLink("Details", "Details", "Photo", new { id = item.PhotoId }, new { type = "button", @class = "btn btn-default btn-xs linkPhoto" })
+        </div>
         <div class="caption">
             <h4>@item.UserName</h4>
             <p>@item.Date.Value.ToShortDateString()</p>

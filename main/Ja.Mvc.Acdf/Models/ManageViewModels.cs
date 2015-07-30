@@ -107,24 +107,31 @@ namespace Ja.Mvc.Acdf.Models
         [Required]
         [RegularExpression(@"^([0-9a-zA-Z]([\+\-_\.][0-9a-zA-Z]+)*)+@(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]*\.)+[a-zA-Z0-9]{2,3})$", ErrorMessage = "Your email address is not in a valid format. Example of correct format: joe.example@example.org")]
         public string Email { get; set; }
-        [Display(Name = "View Name")]
+        [Display(Name = "Pseudo")]
         public string Pseudo { get; set; }
-        [Display(Name = "First Name")]
+        [Display(Name = "Prénom")]
         public string FirstName { get; set; }
-        [Display(Name = "Last Name")]
+        [Display(Name = "Nom")]
         public string LastName { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Date naissance")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> BirthDate { get; set; }
         public int BirthDateDay { get; set; }
         public int BirthDateMonth { get; set; }
         public int BirthDateYear { get; set; }
+        [Display(Name = "Première année à l'école")]
         public int FirstYearSchool { get; set; }
+        [Display(Name = "Dernière année à l'école")]
         public int LastYearSchool { get; set; }
+        [Display(Name = "Dernière classe")]
         public string LastClass { get; set; }
+        [Display(Name = "Ville actuelle")]
         public string ActualCity { get; set; }
+        [Display(Name = "Pays actuel")]
         public string ActualCountry { get; set; }
         public string AvatarUrl { get; set; }
+        [Display(Name = "Date enregistrement")]
         public Nullable<System.DateTime> RegistrationDate { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> Day { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> Month { get; set; }

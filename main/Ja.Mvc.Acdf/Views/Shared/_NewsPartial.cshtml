@@ -5,27 +5,22 @@
     <div class="panel-body">
         <p>
             <iframe frameborder="0" width="200" height="113" src="http://www.dailymotion.com/embed/video/x1ow3tw?autoPlay=0&logo=0" allowfullscreen></iframe><br /><a href="http://www.dailymotion.com/video/x1ow3tw_casablanca-41-recital-a-barbizon-mpg_people" target="_blank">CASABLANCA 41 _RECITAL A BARBIZON_.mpg</a> <i>par <a href="http://www.dailymotion.com/foucauld-casa" target="_blank">foucauld-casa</a></i>
+        </p>
         <p style="font-size:x-small">
             "...jusqu'au Collège Charles De Foucauld où ce qu'on m'enseigne il faut que les gens s'aiment,
             et ce qu'on m'enseigne c'est pas pour que les coeurs saignent..."
         </p>
         <ul>
-            <li><span class="label label-info">New</span> <a href="@Url.Content("~/PdfViewer")">Des nouveaux documents</a></li>
-            <li><span class="label label-info">New</span> <a href="http://www.dailymotion.com/group/ACDF" target="_blank">ACDF sur DailyMotion <i class="fa fa-external-link"></i></a></li>
-            <li><span class="label label-info">New</span> <a href="@Url.Content("~/Video")">Casablanca Bernard Sauvat</a></li>
-            <li><a href="@Url.Content("~/Home/Archives")">Divers archives</a></li>
-            <li><a href="@Url.Content("~/Home/Anecdotes")">Vos anecdotes</a></li>
-            <li><a href="@Url.Content("~/Home/Index#anecdotesemaine")">Anecdote de la semaine</a></li>
-            <li><a href="@Url.Content("~/Home/Tramp")">Logos Tramps</a></li>
-            <li><a href="@Url.Content("~/Home/Index#ancienstalent")">Les anciens ont du talent</a></li>
-            <li><a href="@Url.Content("~/PdfViewer")">Palmares & Tramp</a></li>
-            <li><a href="@Url.Content("~/GuessBook")">Guess Book</a></li>
+            <li><span class="label label-info">New</span> @Html.ActionLink("Gérer votre profil", "Index", "Manage")</li>
+            <li><span class="label label-info">New</span> @Html.ActionLink("Mettez à jour vos données", "ChangeProfile", "Manage")</li>
+            <li><span class="label label-info">New</span> @Html.ActionLink("Changez votre photo", "ChangePhoto", "Manage")</li>
+            <li><span class="label label-info">New</span> @Html.ActionLink("Changer de mot de passe", "ChangePassword", "Manage")</li>
+            <li><a href="@Url.Content("~/GuessBook")">Signez le livre d'or</a></li>
         </ul>
-        </p>
     </div>
     <div class="panel-footer">
-        <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
-        <ul class="list-inline"><li><a href="#">1 Week Ago</a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</a></li><li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li></ul>
+        @*<p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
+        <ul class="list-inline"><li><a href="#">1 Week Ago</a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</a></li><li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li></ul>*@
     </div>
 </div>
 

@@ -32,10 +32,11 @@
             @*@Html.ActionLink( currentUser.Pseudo, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
             @*- [10010] - ADD: Avatar in _LoginPartial*@
             <a href="@Url.Action("Index", "Manage")" title="Manage" , rel="nofollow">
-                @currentUser.Pseudo <img id="login_photo" class="img-circle" style="float: left; padding-right:5px" height="35" width="35" src="@Url.Content(@image)" />
+                @*- [10015] - MODIF: _LoginPartial and _Layout*@
+                Votre profil
             </a>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Déconnexion</a></li>
+        <li><a title="Disconnect" href="javascript:document.getElementById('logoutForm').submit()">Déconnexion</a></li>
     </ul>
     }
 }
