@@ -19,6 +19,9 @@
     font-size:smaller;
     color:blue;
 }
+.photoWidth{
+    max-width: 100px;
+}
 /* CUSTOMIZE CONTAINER 
 -------------------------------------------------- */
 .container{

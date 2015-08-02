@@ -15,8 +15,22 @@ namespace JA.Helpers
 {
     public class Utils
     {
+        public static Ja.Mvc.Acdf.Models.ApplicationUser CurrentUserObject(string UserId)
+        {
+            var userManager = new UserManager<Ja.Mvc.Acdf.Models.ApplicationUser>
+                (new Microsoft.AspNet.Identity.EntityFramework.UserStore<Ja.Mvc.Acdf.Models.ApplicationUser>
+                (new Ja.Mvc.Acdf.Models.ApplicationDbContext()));
+
+            // Get the current logged in User and look up the user in ASP.NET Identity
+            var currentUser = userManager.FindById(UserId);
+
+            return currentUser;
+
+        }
+
         public static string AppPath()
         {
+
             string appPath = "";
             var a = HttpRuntime.AppDomainAppVirtualPath;
             if (a == "/")

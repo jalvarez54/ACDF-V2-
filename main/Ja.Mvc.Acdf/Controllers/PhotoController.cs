@@ -263,7 +263,9 @@ namespace Ja.Mvc.Acdf.Controllers
                     SubCategoryId = model.SubCategoryId,
                     Description = model.Description,
                     Place = model.Place,
-                    UserName = JA.Helpers.Utils.GetUserName(),
+                    // - [10017] - CHANGE: use Pseudo as ViewName instead of UserName
+                    //UserName = JA.Helpers.Utils.GetUserName,
+                    UserName = JA.Helpers.Utils.CurrentUserObject(User.Identity.GetUserId()).Pseudo,
                     SchoolPeriod = model.SchoolPeriod,
                     Date = DateTime.Now,
                     UserId = User.Identity.GetUserId(),
@@ -337,7 +339,9 @@ namespace Ja.Mvc.Acdf.Controllers
                 CategoryName = db.AcdfCategories.Find(acdfPhoto.CategoryId).CategoryName,
                 Description = acdfPhoto.Description,
                 Place = acdfPhoto.Place,
-                UserName = JA.Helpers.Utils.GetUserName(),
+                // - [10017] - CHANGE: use Pseudo as ViewName instead of UserName
+                //UserName = JA.Helpers.Utils.GetUserName,
+                UserName = JA.Helpers.Utils.CurrentUserObject(User.Identity.GetUserId()).Pseudo,
                 SubCategoryName = db.AcdfSubCategories.Find(acdfPhoto.SubCategoryId).SubCategoryName,
                 SchoolPeriod = acdfPhoto.SchoolPeriod,
                 Date = DateTime.Now,

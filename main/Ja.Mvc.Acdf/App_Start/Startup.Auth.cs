@@ -106,6 +106,7 @@ namespace Ja.Mvc.Acdf
                         string claimValue = claim.Value.ToString();
                         if (!context.Identity.HasClaim(claimType, claimValue))
                             context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "Facebook"));
+                            //context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:email", context.Email, "XmlSchemaString", "Facebook"));
                     }
                     return System.Threading.Tasks.Task.FromResult(0);
                 }
@@ -117,6 +118,7 @@ namespace Ja.Mvc.Acdf
                 Provider = facebookProvider,
             };
             fao.Scope.Add("email");
+            //fao.Scope.Add("gender");
             fao.Scope.Add("user_birthday");
             //fao.Scope.Add("first_name");
             //fao.Scope.Add("last_name");

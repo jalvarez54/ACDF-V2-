@@ -92,6 +92,7 @@ namespace Ja.Mvc.Acdf.Controllers
                     return View("NotRegistered");
                 }
             }
+
             // Ceci ne comptabilise pas les échecs de connexion pour le verrouillage du compte
             // Pour que les échecs de mot de passe déclenchent le verrouillage du compte, utilisez shouldLockout: true
             // [10002] ADD: Login with name or email 
@@ -535,7 +536,9 @@ namespace Ja.Mvc.Acdf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
+            // - [10016] - BUG: ASP.Net MVC 5 w/identity 2.2.0 Log off not working
+            //AuthenticationManager.SignOut();
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
 

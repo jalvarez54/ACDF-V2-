@@ -178,11 +178,11 @@
                         </li>
                         <li>
                             @*<a href="@Url.Action("Create", "GuessBook")"><span><i class="fa fa-sign-in"></i> Signer le livre d'or</span><span class="badge pull-right">@JA.Helpers.Utils.GetGlobalValue(this.Context, "CountAcdfGuessBooks")</span></a>*@
-                            <a href="@Url.Action("Create", "GuessBook")"><span><i class="fa fa-sign-in"></i> Signer le livre d'or</span><span class="badge pull-right">@ViewBag.CountAcdfGuessBooks</span></a>
+                            <a href="@Url.Action("Create", "GuessBook")"><span><i class="fa fa-lock"></i> Signer le livre d'or</span><span class="badge pull-right">@ViewBag.CountAcdfGuessBooks</span></a>
                         </li>
                         <li>
                             @*<a href="@Url.Action("RestrictedUsersList", "Account")"><i class="fa fa-list"></i> <span>Liste des membres</span><span class="badge pull-right">@JA.Helpers.Utils.GetGlobalValue(this.Context, "CountAspNetUsers")</span></a>*@
-                            <a href="@Url.Action("RestrictedUsersList", "Account")"><i class="fa fa-list"></i> <span>Liste des membres</span><span class="badge pull-right">@ViewBag.CountAspNetUsers</span></a>
+                            <a href="@Url.Action("RestrictedUsersList", "Account")"><i class="fa fa-lock"></i> <span>Liste des membres</span><span class="badge pull-right">@ViewBag.CountAspNetUsers</span></a>
                         </li>
                         <li>
                             <a href="https://acdfcasaV2.codeplex.com/" target="_blank"><i class="fa fa-code"></i> <span>Source CodePlex</span> <i class="fa fa-external-link"></i></a>

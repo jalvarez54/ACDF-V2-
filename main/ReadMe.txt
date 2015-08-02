@@ -6,6 +6,29 @@
 // "Render therefore unto Caesar the things which are Caesar's; and unto God the things that are God's."
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////
+// TODO GENERAL
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+- [00001] Version 1
+    Codeplex http://acdfcasa.codeplex.com/
+    ==> done
+- [00002] Version 2
+    From Y:\MesProjets\_Visual Studio 2013\Projects\AcdfCasa\Main\IkoulaACDF
+    From Y:\MesProjets\_Projets 2015\Codeplex\main\Cdf54.Projet2015
+    Codeplex http://acdfcasav2.codeplex.com/
+    ==> done
+- [00003] Version 2.1
+    - ADD: SignalR Users online counter
+==> XXXX
+- [00004] Version 2.2
+    - ADD: SignalR Chat
+==> XXXX
+
+
+
+- [xxxxx]  
+==> XXXX
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +46,7 @@ VERSION PRODUIT : 2.1
 ////////////////////////
 // TODO
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-- [xxxxx] -ADD: SignalR Chat
+- [xxxxx] -ADD: SignalR Users online counter
     ==> XXXX
 
 
@@ -66,9 +89,17 @@ VERSION PRODUIT : 2
 - [10013] - ADD: Webcam for avatar
     ==> done
 - [10014] - ADD: Show claims feature   
-    ==> XXXX
+    ==> done
 - [10015] - MODIF: Change avatar place
     ==> done
+- [10016] - BUG: ASP.Net MVC 5 w/identity 2.2.0 Log off not working  
+    ==> done
+- [10017] - CHANGE: use Pseudo as ViewName instead of UserName
+    ==> done
+- [10018] - CHANGE: in PhotoViewModel and ModelAcdf replace UserName by Pseudo or ViewName 
+    ==> XXXX
+- [10019] - CHANGE: Dont remove definitively a user
+    ==> XXXX
 
 
 - [xxxxx] 
@@ -149,7 +180,15 @@ VERSION PRODUIT : 2
 - [10015] - MODIF: Change avatar place
     in _LoginPartial and _Layout
     ==> done
-- 2015-07-30 COMMIT: Codeplex http://acdfcasav2.codeplex.com/ (?) MODIF: Change avatar place
+- 2015-07-30 COMMIT: Codeplex http://acdfcasav2.codeplex.com/ (2178) MODIF: Change avatar place
+- [10016] - BUG: ASP.Net MVC 5 w/identity 2.2.0 Log off not working
+    - http://stackoverflow.com/questions/28642284/asp-net-mvc-5-w-identity-2-2-0-log-off-not-working
+    ==> done
+- [10017] - CHANGE: use Pseudo as ViewName instead of UserName
+    see Create and Edit in PhotoController
+    ==> done
+- 2015-08-02 COMMIT: Codeplex http://acdfcasav2.codeplex.com/ (?) MODIF: [10016] [10017] Minor modifications
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

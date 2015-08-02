@@ -89,7 +89,7 @@
                 {
                     <tr>
                         <td data-title=@Html.DisplayNameFor(model => model.Avatar)>
-                            <img class="img-thumbnail" style="max-height:100px" src="@item.AvatarUrl" alt="@item.LastName" title="@(item.FirstName + ' ' + item.LastName)" />
+                            <img class="img-thumbnail photoWidth" src="@item.AvatarUrl" alt="@item.LastName" title="@(item.FirstName + ' ' + item.LastName)" />
                         </td>
                         <td data-title=@Html.DisplayNameFor(model => model.RegistrationDate)>
                             @Html.DisplayFor(modelItem => item.RegistrationDate)
