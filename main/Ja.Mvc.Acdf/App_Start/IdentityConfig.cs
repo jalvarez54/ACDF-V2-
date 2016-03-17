@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Ja.Mvc.Acdf.Models;
+using JA.Helpers;
 
 namespace Ja.Mvc.Acdf
 {
@@ -18,7 +19,7 @@ namespace Ja.Mvc.Acdf
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            // - [10009] - ADD: Email confirmation in AccountController/Register
+            // - [10009] - ADD: Email confirmation in AccountController/Register , Utils.GetAppSetting("cdf54.EmailsRegistration")
             // Indiquez votre service de messagerie ici pour envoyer un e-mail.
             //http://stackoverflow.com/questions/22797845/asp-net-identity-2-0-how-to-implement-iidentitymessageservice-to-do-async-smtp
             using (var client = new System.Net.Mail.SmtpClient())
@@ -31,11 +32,8 @@ namespace Ja.Mvc.Acdf
                 };
                 msg.IsBodyHtml = true;
                 msg.To.Add(message.Destination);
-                msg.CC.Add("jose.alvarez.54@live.fr");
-                msg.CC.Add("jose.alvarez.54@live.fr");
-                msg.CC.Add("jose.alvarez.54@live.fr");
-                msg.CC.Add("jose.alvarez.54@live.fr");
-
+                var t = Utils.GetAppSetting("cdf54.EmailsRegistration");
+                msg.CC.Add(t);
                 await client.SendMailAsync(msg);
 
             }

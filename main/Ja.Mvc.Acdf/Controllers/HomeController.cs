@@ -11,34 +11,6 @@ namespace Ja.Mvc.Acdf.Controllers
     {
         private AcdfEntities db = new AcdfEntities();
 
-        public ActionResult Archives()
-        {
-            ViewBag.Message = "Divers archives.";
-
-            return View();
-
-        }
-        public ActionResult Anecdotes()
-        {
-            ViewBag.Message = "Vos anecdotes.";
-
-            return View();
-
-        }
-        public ActionResult Tramp()
-        {
-            string trampsPath = Server.MapPath("~/Medias/LogosTramp");
-            var DI = new System.IO.DirectoryInfo(trampsPath);
-            System.IO.FileInfo[] fiArr = DI.GetFiles();
-            var model = from f in fiArr
-                        orderby f.Name
-                        select new TrampViewModel()
-                        {
-                            FilePath = System.IO.Path.Combine(HttpRuntime.AppDomainAppVirtualPath, @"Medias/LogosTramp", f.Name),
-                            MetaData = f.Name.Split('_', '.')[1]
-                        };
-            return View(model);
-        }
         public ActionResult Index()
         {
             var aspnetUsers = (from u in db.AspNetUsers
@@ -84,12 +56,6 @@ namespace Ja.Mvc.Acdf.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Page de description de l'application.";
-
-            return View();
-        }
-        public ActionResult Todo()
-        {
-            ViewBag.Message = "En construction.";
 
             return View();
         }

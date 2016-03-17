@@ -24,15 +24,15 @@ namespace Ja.Mvc.Acdf.Models
             IEnumerable<AspNetUser> aspnetUsers)
         {
             Photos = photos;
-            PhotosMonth = photos.Where(m => m.Date.Value.Day <= DateTime.Now.Day && m.Date.Value.Month == DateTime.Now.Month);
+            PhotosMonth = photos.Where(m => m.Date.Value.Month == DateTime.Now.Month & m.Date.Value.Year == DateTime.Now.Year);
             LastFivePhotos = photos.Take(5);
 
             GuessBooks = guessBooks;
-            GuessBooksMonth = guessBooks.Where(m => m.Date.Value.Day <= DateTime.Now.Day && m.Date.Value.Month == DateTime.Now.Month);
+            GuessBooksMonth = guessBooks.Where(m => m.Date.Value.Month == DateTime.Now.Month & m.Date.Value.Year == DateTime.Now.Year);
             LastFiveGuessBooks = guessBooks.Take(5);
 
             AspNetUsers = aspnetUsers;
-            AspNetUsersMonth = aspnetUsers.Where(m => m.RegistrationDate.Value.Day <= DateTime.Now.Day && m.RegistrationDate.Value.Month == DateTime.Now.Month);
+            AspNetUsersMonth = aspnetUsers.Where(m => m.RegistrationDate.Value.Month == DateTime.Now.Month & m.RegistrationDate.Value.Year == DateTime.Now.Year);
             LastFiveAspNetUsers = aspnetUsers.Take(5);
 
             //var birthdaysMonth = aspnetUsers.Where(m => m.BirthDate.Value.Day <= DateTime.Now.Day && m.BirthDate.Value.Month == DateTime.Now.Month);
@@ -48,7 +48,7 @@ namespace Ja.Mvc.Acdf.Models
             {
                 if (m.BirthDate.HasValue)
                 {
-                    if (m.BirthDate.Value.Day <= DateTime.Now.Day && m.BirthDate.Value.Month == DateTime.Now.Month)
+                    if (m.BirthDate.Value.Day <= DateTime.Now.Day & m.BirthDate.Value.Month == DateTime.Now.Month)
                     {
                         BirthDaysMonth.Add(m, DateTime.Now.Year - m.BirthDate.Value.Year);
                     }

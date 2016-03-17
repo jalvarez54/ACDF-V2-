@@ -52,6 +52,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.10-beta\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Owin.Security.Providers, Version=1.21.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.Security.Providers.1.21\lib\net45\Owin.Security.Providers.dll</HintPath>
@@ -190,11 +194,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\GuessBookController.cs" />
     <Compile Include="Controllers\MyErrorController.cs" />
     <Compile Include="Controllers\PdfViewerController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\AnecdoteController.cs" />
+    <Compile Include="Controllers\TrampController.cs" />
+    <Compile Include="Controllers\RencontreController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -378,6 +386,38 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Medias\Images\0403Diapositive1.JPG" />
+    <Content Include="Medias\Images\0403Diapositive2.JPG" />
+    <Content Include="Medias\Images\0403Diapositive3.JPG" />
+    <Content Include="Medias\Images\0403Diapositive4.JPG" />
+    <Content Include="Medias\Images\0402BarrioLatino.jpg" />
+    <Content Include="Medias\Images\0407-01.gif" />
+    <Content Include="Medias\Images\0407-02.gif" />
+    <Content Include="Medias\Images\0407-03.gif" />
+    <Content Include="Medias\Images\0407-04.jpg" />
+    <Content Include="Medias\Images\0407-05.jpg" />
+    <Content Include="Medias\Images\0407-06.jpg" />
+    <Content Include="Medias\Images\0407-07.jpg" />
+    <Content Include="Medias\Images\0407-08b.jpg" />
+    <Content Include="Medias\Images\0407-08.jpg" />
+    <Content Include="Medias\Images\0407-09.jpg" />
+    <Content Include="Medias\Images\0407-10.jpg" />
+    <Content Include="Medias\Images\0407-11.jpg" />
+    <Content Include="Medias\Images\0407-12.jpg" />
+    <Content Include="Medias\Images\0407-13.jpg" />
+    <Content Include="Medias\Images\0407-14.jpg" />
+    <Content Include="Medias\Images\0407-15.jpg" />
+    <Content Include="Medias\Images\0407-16.jpg" />
+    <Content Include="Medias\Images\0407-17.jpg" />
+    <Content Include="Medias\Images\0407-18.jpg" />
+    <Content Include="Medias\Images\0407-19.jpg" />
+    <Content Include="Medias\Images\0407-20.jpg" />
+    <Content Include="Medias\Images\0407-21.jpg" />
+    <Content Include="Medias\Images\0407-22.jpg" />
+    <Content Include="Medias\Images\0407-23.jpg" />
+    <Content Include="Medias\Images\0407-24.jpg" />
+    <Content Include="Medias\Images\0407-25.jpg" />
+    <Content Include="Medias\Images\0407-26.jpg" />
     <Content Include="Models\ModelAcdf.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAcdf.edmx</DependentUpon>
@@ -692,20 +732,16 @@
     <Content Include="Views\Shared\Articles\Anecdote-04.cshtml" />
     <Content Include="Views\Shared\Articles\Anecdote-05.cshtml" />
     <Content Include="Views\Shared\Articles\Anecdote-06.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-10.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-11.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-12.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-13.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-14.cshtml" />
-    <Content Include="Views\Shared\Articles\Anecdote-15.cshtml" />
-    <Content Include="Views\Shared\Articles\AnecdoteVierge.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-01.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-02.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-03.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-04.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-05.cshtml" />
+    <Content Include="Views\Shared\Articles\Anecdote-01-06.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\Shared\_ComingSoonPartial.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
-    <Content Include="Views\Home\Anecdotes.cshtml" />
-    <Content Include="Views\Home\Archives.cshtml" />
     <Content Include="Views\Home\Todo.cshtml" />
-    <Content Include="Views\Home\Tramp.cshtml" />
     <Content Include="Views\Home\_HomeAspNetUserMonthPartial.cshtml" />
     <Content Include="Views\Home\_HomeAspNetUserPartial.cshtml" />
     <Content Include="Views\Home\_HomeBirthDayPartial.cshtml" />
@@ -727,7 +763,6 @@
     <Content Include="Views\Home\_PanelTalentPartial_Duhour.cshtml" />
     <Content Include="Views\Home\_PanelTalentPartial_Mairesse.cshtml" />
     <Content Include="Views\Home\_PanelTalentPartial_Sauvat.cshtml" />
-    <Content Include="Views\Home\_PanelTalentThumbNailPartial.cshtml" />
     <Content Include="Views\Account\RestrictedUsersList.cshtml" />
     <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Content Include="Views\UsersAdmin\Delete.cshtml" />
@@ -738,6 +773,30 @@
     <Content Include="Views\Account\NotRegistered.cshtml" />
     <Content Include="Views\Home\_PanelLastInfoPartial.cshtml" />
     <Content Include="Views\Home\Mask.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-00.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-01.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-08.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-02.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-03.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-04.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-05.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-06.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-07.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0402-participants.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0403-00.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0403-participants.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0403-01.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0403-02.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0403-03.cshtml" />
+    <Content Include="Views\Rencontre\Index.cshtml" />
+    <Content Include="Views\Archive\Index.cshtml" />
+    <Content Include="Views\Anecdote\Index.cshtml" />
+    <Content Include="Views\Tramp\Index.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0407-participants.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0407-00.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0407-01.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0407-02.cshtml" />
+    <Content Include="Views\Shared\Articles\Rencontres0407-03.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

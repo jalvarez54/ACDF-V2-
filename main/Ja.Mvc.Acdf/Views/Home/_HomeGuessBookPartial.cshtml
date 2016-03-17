@@ -4,17 +4,21 @@
 {
 
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>@Html.DisplayFor(modelItem => item.AspNetUser.FirstName) @Html.DisplayFor(modelItem => item.AspNetUser.LastName)</b><em>(@Html.DisplayFor(modelItem => item.AspNetUser.Pseudo))</em><br />
+        </div>
+        <div class="panel-body">
+            <p>
                 <img src="@item.AspNetUser.AvatarUrl" title="@item.AspNetUser.FirstName @item.AspNetUser.LastName" alt="@item.AspNetUser.FirstName @item.AspNetUser.LastName" />
-            </div>
-            <div class="panel-body">
-                <b>@Html.DisplayFor(modelItem => item.Date)</b><br />
+            </p>
+            <p>
                 @Html.TextAreaFor(modelItem => item.Message, new { @class = "border-box", @readonly = true, rows = "3", disabled = true })
-            </div>
+            </p>
+        </div>
 
-            <div class="panel-footer">
-                <b>@Html.DisplayFor(modelItem => item.AspNetUser.FirstName)</b> @Html.DisplayFor(modelItem => item.AspNetUser.LastName)<br />
-            </div>
+        <div class="panel-footer">
+            <em class="pull-right">@Html.DisplayFor(modelItem => item.Date)</em><br />
+        </div>
     </div>
 }

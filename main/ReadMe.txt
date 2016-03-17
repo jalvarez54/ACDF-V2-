@@ -100,6 +100,8 @@ VERSION PRODUIT : 2
     ==> XXXX
 - [10019] - CHANGE: Dont remove definitively a user
     ==> XXXX
+- [10020] - BUG: With Facebook external login V2.4 cannot retreive email, public_profile
+    ==> done
 
 
 - [xxxxx] 
@@ -163,6 +165,11 @@ VERSION PRODUIT : 2
         - ADD: Views/Manage/ChangePhoto.cshtml and ChangeProfile.cshtml views 
     - [10005] - ADD: Gravatar
     - [10006] - ADD: Social network login
+               Google https://console.developers.google.com/project
+               Microsoft http://go.microsoft.com/fwlink/?LinkID=144070
+               Twitter https://apps.twitter.com/
+               FaceBook https://developers.facebook.com/
+               Github https://developer.github.com/v3/oauth/
     - [10007] - ADD: Social network picture
         - EXEC: PM> Add-Migration GravSoNetPic
         - EXEC: PM> Update-Database
@@ -188,6 +195,11 @@ VERSION PRODUIT : 2
     see Create and Edit in PhotoController
     ==> done
 - 2015-08-02 COMMIT: Codeplex http://acdfcasav2.codeplex.com/ (?) MODIF: [10016] [10017] Minor modifications
+- [10020] - BUG: With Facebook external login V2.4 cannot retreive email, public_profile
+    - http://stackoverflow.com/questions/31714500/access-email-address-in-the-oauth-externallogincallback-from-facebook-v2-4-api-i
+    - Install Facebook SDK v 7.0.6 http://facebooksdk.net/
+    - see AccountController/ExternalLoginCallback to retreive email
+    ==> done
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

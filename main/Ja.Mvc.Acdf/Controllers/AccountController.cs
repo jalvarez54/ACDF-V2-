@@ -15,6 +15,7 @@ using JA.Helpers;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using Facebook;
 
 namespace Ja.Mvc.Acdf.Controllers
 {
@@ -415,6 +416,15 @@ namespace Ja.Mvc.Acdf.Controllers
                 return RedirectToAction("Login");
             }
 
+            // - [10020] - BUG: With Facebook external login V2.4 cannot retreive email, public_profile
+            if (loginInfo.Login.LoginProvider == "Facebook")
+            {
+                var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+                var access_token = identity.FindFirstValue("urn:facebook:access_token");
+                var fb = new FacebookClient(access_token);
+                dynamic myInfo = fb.Get("/me?fields=email"); // specify the email field
+                loginInfo.Email = myInfo.email;
+            }
 
             // Connecter cet utilisateur à ce fournisseur de connexion externe si l'utilisateur possède déjà une connexion
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);

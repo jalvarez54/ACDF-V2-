@@ -38,7 +38,8 @@ namespace Ja.Mvc.Acdf
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-                }
+                },
+                //CookieName = ".YAFNET_Authentication"
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -52,7 +53,7 @@ namespace Ja.Mvc.Acdf
 
             // - [10006] - ADD: Social network login
             // Enable logging with third party login providers
-
+            const string XmlSchemaString = "http://www.w3.org/2001/XMLSchema#string";
             ///
             /// MICROSOFT
             ///
@@ -65,7 +66,7 @@ namespace Ja.Mvc.Acdf
                         var claimType = string.Format("urn:microsoft:{0}", claim.Key);
                         string claimValue = claim.Value.ToString();
                         if (!context.Identity.HasClaim(claimType, claimValue))
-                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "Microsoft"));
+                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Microsoft"));
                     }
                     return System.Threading.Tasks.Task.FromResult(0);
                 }
@@ -100,13 +101,14 @@ namespace Ja.Mvc.Acdf
             {
                 OnAuthenticated = (context) =>
                 {
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:access_token", context.AccessToken, XmlSchemaString, "Facebook"));
+                    //context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
                     foreach (var claim in context.User)
                     {
                         var claimType = string.Format("urn:facebook:{0}", claim.Key);
                         string claimValue = claim.Value.ToString();
                         if (!context.Identity.HasClaim(claimType, claimValue))
-                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "Facebook"));
-                            //context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:email", context.Email, "XmlSchemaString", "Facebook"));
+                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Facebook"));
                     }
                     return System.Threading.Tasks.Task.FromResult(0);
                 }
@@ -116,17 +118,19 @@ namespace Ja.Mvc.Acdf
                 AppId = Utils.GetAppSetting("FaceBookAppId"),
                 AppSecret = Utils.GetAppSetting("FaceBookAppSecret"),
                 Provider = facebookProvider,
+                CallbackPath = new PathString("/signin-facebook"),
             };
+            fao.Scope.Add("public_profile");
+            fao.Scope.Add("user_friends");
             fao.Scope.Add("email");
             //fao.Scope.Add("gender");
             fao.Scope.Add("user_birthday");
-            //fao.Scope.Add("first_name");
-            //fao.Scope.Add("last_name");
+            ////fao.Scope.Add("first_name");
+            ////fao.Scope.Add("last_name");
             fao.Scope.Add("user_likes");
-            //fao.Scope.Add("friends_about_me");
-            //fao.Scope.Add("friends_photos");
+            fao.Scope.Add("user_about_me");
+            fao.Scope.Add("user_photos");
             app.UseFacebookAuthentication(fao);
-
             ///
             /// GOOGLE
             ///
@@ -139,7 +143,7 @@ namespace Ja.Mvc.Acdf
                         var claimType = string.Format("urn:google:{0}", claim.Key);
                         string claimValue = claim.Value.ToString();
                         if (!context.Identity.HasClaim(claimType, claimValue))
-                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "Google"));
+                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Google"));
                     }
                     return System.Threading.Tasks.Task.FromResult(0);
                 }
@@ -165,7 +169,7 @@ namespace Ja.Mvc.Acdf
                         var claimType = string.Format("urn:github:{0}", claim.Key);
                         string claimValue = claim.Value.ToString();
                         if (!context.Identity.HasClaim(claimType, claimValue))
-                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "GitHub"));
+                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "GitHub"));
                     }
                     return System.Threading.Tasks.Task.FromResult(0);
                 }

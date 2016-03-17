@@ -1,0 +1,25 @@
+﻿<div class="panel-body">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#0407participants" data-toggle="tab">Participants</a></li>
+        <li><a href="#0407id1" data-toggle="tab">Journée du 09/07/2004</a></li>
+        <li><a href="#0407id2" data-toggle="tab">Journée du 09/07/2004 (suite)</a></li>
+        <li><a href="#0407id3" data-toggle="tab">Journée du 09/07/2004 (fin)</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="0407participants">
+            @Html.Partial("Articles/Rencontres0407-participants")
+        </div>
+        <div class="tab-pane" id="0407id1">
+            @Html.Partial("Articles/Rencontres0407-01")
+        </div>
+        <div class="tab-pane" id="0407id2">
+            @Html.Partial("Articles/Rencontres0407-02")
+        </div>
+        <div class="tab-pane" id="0407id3">
+            @Html.Partial("Articles/Rencontres0407-03")
+        </div>
+    </div>
+</div>

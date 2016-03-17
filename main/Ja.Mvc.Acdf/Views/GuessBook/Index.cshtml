@@ -15,16 +15,20 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <img src="@item.AspNetUser.AvatarUrl" title="@item.AspNetUser.FirstName @item.AspNetUser.LastName" alt="@item.AspNetUser.FirstName @item.AspNetUser.LastName" />
+                <b>@Html.DisplayFor(modelItem => item.AspNetUser.FirstName) @Html.DisplayFor(modelItem => item.AspNetUser.LastName) </b><em>(@Html.DisplayFor(modelItem => item.AspNetUser.Pseudo))</em><br />
             </div>
             <div class="panel-body">
-                <b>@Html.DisplayFor(modelItem => item.Date)</b><br />
-                @Html.TextAreaFor(modelItem => item.Message, new { @class = "border-box", @readonly = true, rows = "3", disabled = true })
+                <p>
+                    <img src="@item.AspNetUser.AvatarUrl" title="@item.AspNetUser.FirstName @item.AspNetUser.LastName" alt="@item.AspNetUser.FirstName @item.AspNetUser.LastName" />
+                </p>
+                <p>
+                    @Html.TextAreaFor(modelItem => item.Message, new { @class = "border-box", @readonly = true, rows = "3", disabled = true })
+                </p>
             </div>
 
             <div class="panel-footer">
-                <b>@Html.DisplayFor(modelItem => item.AspNetUser.Pseudo)</b> @Html.DisplayFor(modelItem => item.AspNetUser.FirstName) @Html.DisplayFor(modelItem => item.AspNetUser.LastName)<br />
-                @if ((User.Identity.Name == item.AspNetUser.UserName) || (User.IsInRole("Admin")))
+                <em class="pull-right">@Html.DisplayFor(modelItem => item.Date)</em><br />
+               @if ((User.Identity.Name == item.AspNetUser.UserName) || (User.IsInRole("Admin")))
                 {
                     <div>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

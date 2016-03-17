@@ -1,0 +1,72 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/fancybox")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                helpers: {
+                    title: {
+                        type: 'float',
+                    },
+                },
+                openEffect: 'none',
+                closeEffect: 'elastic',
+                nextEffect: 'fade',
+                prevEffect: 'fade',
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#myModal').modal('show');
+    </script>
+}
+
+
+@{
+    ViewBag.Title = "Rencontres";
+}
+
+<h2>@ViewBag.Message</h2>
+<div class="container">
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        Réunion de Paris <span class="badge pull-right">Février 2004</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                @Html.Partial("Articles/Rencontres0402-00")
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        Réunion Muret - Saint-Palais - Pau <span class="badge pull-right">26 et 27 Mars 2004</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                @Html.Partial("Articles/Rencontres0403-00")
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        Réunion Pays Basque <span class="badge pull-right">Juillet 2004</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                @Html.Partial("Articles/Rencontres0407-00")
+            </div>
+        </div>
+    </div>
+</div>
+
