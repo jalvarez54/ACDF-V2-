@@ -504,12 +504,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="App_Settings\MailSettings-Common.config" />
     <Content Include="App_Settings\Distrib-MailSettings.config" />
-    <Content Include="App_Settings\appSettings-Debug.config" />
-    <Content Include="App_Settings\appSettings-Release.config">
-      <SubType>Designer</SubType>
-    </Content>
     <EntityDeploy Include="Models\ModelAcdf.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelAcdf.Designer.cs</LastGenOutput>
@@ -633,14 +628,6 @@
     <Content Include="Scripts\webcam.swf" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
