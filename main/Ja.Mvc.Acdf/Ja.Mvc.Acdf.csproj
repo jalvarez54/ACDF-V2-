@@ -529,6 +529,9 @@
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="App_Settings\Distrib-appSettings.config" />
     <Content Include="App_Data\Acdf.mdf" />
+    <Content Include="App_Settings\appSettings-Debug.config" />
+    <Content Include="App_Settings\appSettings-Release.config" />
+    <Content Include="App_Settings\MailSettings-Common.config" />
     <None Include="Properties\PublishProfiles\ACDF.pubxml" />
     <None Include="Properties\PublishProfiles\ACDFTEST.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -784,6 +787,12 @@
     <Content Include="Views\Shared\Articles\Rencontres0407-01.cshtml" />
     <Content Include="Views\Shared\Articles\Rencontres0407-02.cshtml" />
     <Content Include="Views\Shared\Articles\Rencontres0407-03.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
