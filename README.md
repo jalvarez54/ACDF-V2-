@@ -11,7 +11,7 @@ Project Description
 
 Former students of the school Charles de Foucauld Casablanca-Morocco
 
-    Live [here](http://jowalva.ddns.net/ACDF)
+[Live](http://jowalva.ddns.net/ACDF)
 
 Database ACDF.mdf in App_Data
 =============================
